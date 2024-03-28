@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Report</title>
+    <link rel="stylesheet" href="{% static 'report.css' %}">
+</head>
+
+<body>
+    <h1>BODY MASS INDEX</h1>
+    <div class = sample>
+      <form class="form" id="form" method="post">
+        {% csrf_token %}
+          <center>
+          <div class="row-one">
+            <label class="container">
+            <input type="radio" name="radio" id="f"><p class="text">Female</p>
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">
+            <input type="radio" name="radio" id="m"><p class="text">Male</p>
+              <span class="checkmark"></span>
+            </label>
+            </div>
+          
+          <div class="row-three">
+            <input type="text" class="text-input" name="height" autocomplete="off" required><p class="text">Height (cm)</p>
+            <input type="text" class="text-input" name="weight" autocomplete="off" required><p class="text">Weight (kg)</p>
+          </div>
+          <br>
+          <button type="submit">Submit</button>
+          </center>
+          <br>
+          <div class="indent">
+            <a>  BMI:{{bmi}}</a>
+          </div>
+          <br>
+          <a>{{c}}</a>
+
+          {% if request.user.is_authenticated %}
+          <div class="sample1"> 
+            {% if bmi <= 18.5 %}
+            <a href="{% static 'dc lt 18.5.pdf' %}">Diet Chart.pdf</a>
+            {% elif bmi > 18.5 and bmi <= 24.9 %}
+            <a href="{% static 'dc lt 18.5 to 24.9.pdf' %}">Diet Chart.pdf</a>.
+            {% elif bmi > 25 and bmi <= 29 %}
+            <a href="{% static 'dc lt 25 to 29.pdf' %}">Diet Chart.pdf</a>.
+            {% elif bmi > 30 %}
+            <a href="{% static 'dc gt 30.pdf' %}">Diet Chart.pdf</a>.
+            {% endif %}
+          </div>
+          {% endif %}
+          
+          
+      </form>
+    </div>
+    <style>
+      .indent{
+        text-indent: 50px;
+      }
+    </style>
+</body>

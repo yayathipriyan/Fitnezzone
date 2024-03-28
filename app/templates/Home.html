@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FitNezZone</title>
+    <link rel="stylesheet" href="{% static 'homestyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+        <i class="fas fa-dumbbell"></i>FitNezZone
+        </a>
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'schedules' %}">Schedule</a>
+            <a>|</a>
+            {% if request.user.is_authenticated %}
+            <a>Welcome {{user.username}},</a>
+            <a href="report">Report</a>
+            <a href="logout">Logout</a>
+            {% else %}
+            <a href="report">Report</a>
+            a
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}" class="btn">Sign Up</a> 
+            {% endif %}
+        </nav>
+    </header>
+    <section class="home">
+        <div class="max-width">
+            <div class="home-content">
+                <h3>help for ideal <br> body fitness</h3>
+                <a href="{% url 'courses' %}"><button class="btn">Get started</button></a>
+            </div>
+            <div class="home-image">
+                <img src="{% static 'gif.gif' %}" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="home2">
+        <div class="max-width2" id="aboutus">
+            <div class="home-content">
+                <h3>About us</h3><br>
+                <p>Let’s make healthy happen!</p><br>
+                <p>FITNESS FOR ALL</p><br>
+                <p>Fitness is not the prerogative of a few. It is the right of everyone on the same premise, we committed to make Healthy happen to all. Fitness have become an essential component for many people who want to train at their own pace, keep the motivation high and overall improving their life.</p><br>
+                <p>The keys to having a successful workout and completing your fitness goals are motivating with someone else, entertaining yourself and enjoying what you do. If you make boring workouts, your fitness plans can quickly lose pace. So make your exercise fun and you’ll stick to it for a very long time. And for that we offer a various range of courses not only that includes heavy workouts but also for pregnant women’s and elderly people who would like to have a fun and relaxing workout which would benefit them eventually and to lead a healthy lifestyle.</p><br>
+                <p>Our community provides courses which includes regular workouts along with few martial arts and some entertaining workouts that you want to feel light like Zumba and so on, The Fitnezzone team is comprised of experienced, passionate professionals who are dedicated to obtaining, creating, and disseminating relevant, timely, high-quality content, and to providing comprehensive strength and conditioning, and mind/body wellness programs.</p><br>
+                <p>So Get stronger and fitter with us !!</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="home3">
+        <div class="max-width3">
+            <div class="home-content">
+                <h3>Trainer Details<br><br></h3>
+            </div>
+        </div>
+        <div class="pics0">
+            <div class="home1-image">
+                <img src="{% static 'Id 1.jpg' %}" alt="" width="350">
+            </div>
+            <div class="home2-image">
+                <img src="{% static 'Id 2.jpg' %}" alt="" width="350">
+            </div>
+        </div>
+        <div class="pics">
+            <div class="home3-image">
+                <img src="{% static 'Id 3.jpg' %}" alt="" width="350">
+            </div>
+            <div class="home4-image">
+                <img src="{% static 'Id 4.jpg' %}" alt="" width="350">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">        
+        <div>
+            <h3>Company</h3>
+            <a href="#aboutus">About Us</a><br>
+            <a href="">Terms and Conditions</a><br>
+            <a href="">Privacy Policy</a><br>
+            <a href="news">NewsLetter</a>
+        </div>
+        <div style="float: right;">
+            <h3>Members</h3>
+            <a href="">FAQ</a><br>
+            <a href="blog">Blog</a><br>
+            <a href="contactus">Contact Us</a>
+        </div>
+    </footer>
+</body>
+</html>
